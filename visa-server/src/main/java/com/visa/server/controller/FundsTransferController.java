@@ -53,6 +53,7 @@ public class FundsTransferController {
         try {
             log.info("=== Push Funds Transaction (OCT) ===");
             log.info("Received MLE-encrypted request with keyId: {}", keyId);
+            log.info("Encrypted request (JWE): {}", encryptedRequest.getEncData());
 
             // Step 1: Decrypt the incoming request
             String decryptedRequest = mleService.decryptPayload(encryptedRequest.getEncData());

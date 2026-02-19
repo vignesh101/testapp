@@ -1,0 +1,37 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: file:C:/Users/Vignesh/visa-projects/certs/server-keystore.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
+    key-alias: server
+    # mTLS - require client certificate
+    client-auth: need
+    trust-store: file:C:/Users/Vignesh/visa-projects/certs/server-truststore.p12
+    trust-store-password: changeit
+    trust-store-type: PKCS12
+    protocol: TLS
+    enabled-protocols: TLSv1.2,TLSv1.3
+
+spring:
+  application:
+    name: visa-server
+
+# Application credentials (Basic Auth)
+visa:
+  auth:
+    user-id: "1WM2TT4IHPXC8DQ5I3CH21n1rEBGK-Eyv_oLdzE2VZpDqRn_U"
+    password: "19JRVdej9"
+
+# MLE Configuration
+mle:
+  key-id: "7f591161-6b5f-4136-80b8-2ae8a44ad9eb"
+  # Server's private key - used to DECRYPT incoming requests from client
+  server-private-key-path: C:/Users/Vignesh/visa-projects/certs/mle-server-private.pem
+  # Client's public cert - used to ENCRYPT outgoing responses to client
+  client-public-cert-path: C:/Users/Vignesh/visa-projects/certs/mle-client-public.pem
+
+logging:
+  level:
+    com.visa.server: DEBUG
